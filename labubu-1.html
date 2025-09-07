@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdvStyle - Penjualan Robux Roblox</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Fredoka One -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Fredoka One', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .slideIn {
+      animation: slideIn 1.2s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .bounce {
+      animation: bounce 0.6s infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+
+    /* Animasi warna merah-putih */
+    @keyframes redWhitePulse {
+      0%, 100% { background-color: #ef4444; color: white; }
+      50% { background-color: white; color: #ef4444; }
+    }
+
+    /* Header merah dengan animasi */
+    header {
+      background-color: #ef4444;
+      animation: redWhitePulse 3s ease-in-out infinite;
+      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.5);
+      color: white;
+    }
+
+    /* Footer merah */
+    footer {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    /* Animasi pada tombol beli */
+    button {
+      animation: redWhitePulse 4s ease-in-out infinite;
+      border: 2px solid #ef4444;
+      background-color: white;
+      color: #ef4444;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      animation: none;
+      background-color: #b91c1c !important; /* merah gelap */
+      color: white !important;
+      border-color: #7f1d1d !important;
+    }
+
+    /* Animasi pada hero text dan background gradient merah-putih */
+    .hero {
+      background: linear-gradient(90deg, #ef4444 0%, #ffffff 100%);
+      color: #ef4444;
+    }
+    .hero h2 {
+      /* Animasi dihapus agar tidak ada stroke */
+      /* animation: redWhitePulse 5s ease-in-out infinite; */
+      color: #ef4444;
+    }
+    .hero p {
+      color: #7f1d1d;
+    }
+
+    /* Animasi border merah-putih pada produk */
+    .product-card {
+      border: 2px solid transparent;
+      animation: borderPulse 6s ease-in-out infinite;
+      border-radius: 0.5rem;
+      background-color: #fff0f0;
+      color: #7f1d1d;
+    }
+    @keyframes borderPulse {
+      0%, 100% { border-color: #ef4444; }
+      50% { border-color: white; }
+    }
+
+    /* Link WhatsApp merah */
+    #contact a {
+      color: #ef4444;
+    }
+    #contact a:hover {
+      text-decoration: underline;
+      color: #b91c1c;
+    }
+
+    /* Awal section produk disembunyikan dengan animasi */
+    #products {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      height: 0;
+      overflow: hidden;
+    }
+    /* Saat show ditambahkan, tampilkan dengan animasi */
+    #products.show {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+      height: auto;
+      overflow: visible;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="p-4 shadow-lg slideIn">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">AdvStyle</h1>
+      <p class="text-sm">Spesialis Penjualan Robux di Industri Roblox</p>
+    </div>
+  </header>
+
+  <section class="hero py-16 text-center">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-4">Selamat Datang di AdvStyle</h2>
+      <p class="text-lg mb-6">Dapatkan Robux murah dan cepat untuk pengalaman Roblox terbaik!</p>
+      <img src="file:///C:/Users/Acer/Downloads/unnamed.webp" alt="Gambar game Roblox dengan karakter dan dunia virtual" class="mx-auto rounded-lg shadow-lg max-w-full" />
+    </div>
+  </section>
+
+  <!-- Menu Awal -->
+  <section id="menu-awal" class="py-16 text-center container mx-auto">
+    <h2 class="text-3xl font-bold mb-6" style="color:#b91c1c;">Menu Awal</h2>
+    <p class="mb-6">Silakan pilih untuk melihat paket Robux kami.</p>
+    <button id="btn-mulai" class="px-6 py-3 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition">Lihat Paket Robux</button>
+  </section>
+
+  <!-- Section Produk (disembunyikan awalnya) -->
+  <section id="products" class="py-16 bg-white container mx-auto px-4" aria-hidden="true">
+    <h2 class="text-3xl font-bold text-center mb-8 slideIn" style="color:#b91c1c;">Produk Kami - Paket Robux</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="product-card p-6 rounded-lg shadow-md text-center bounce">
+        <img src="file:///C:/Users/Acer/Downloads/Robux_2019_Logo_Black.svg.webp" alt="Paket Robux 500 dengan ikon koin emas" />
+        <h3 class="text-xl font-semibold mt-4">Paket Robux 500</h3>
+        <p class="mt-2">Ideal untuk pemain pemula.</p>
+        <p class="text-2xl font-bold text-green-600 mt-2">Rp 50.000</p>
+        <button onclick="alert('Kontak kami di WA 083837940218 untuk order!')" class="mt-4 px-4 py-2 rounded hover:bg-red-700 transition">Beli Sekarang</button>
+      </div>
+      <div class="product-card p-6 rounded-lg shadow-md text-center slideIn">
+        <img src="file:///C:/Users/Acer/Downloads/Robux_2019_Logo_Black.svg.webp" alt="Paket Robux 1000 dengan efek special" />
+        <h3 class="text-xl font-semibold mt-4">Paket Robux 1000</h3>
+        <p class="mt-2">Bonus extra untuk upgrade avatar.</p>
+        <p class="text-2xl font-bold text-green-600 mt-2">Rp 90.000</p>
+        <button onclick="alert('Kontak kami di WA 083837940218 untuk order!')" class="mt-4 px-4 py-2 rounded hover:bg-red-700 transition">Beli Sekarang</button>
+      </div>
+      <div class="product-card p-6 rounded-lg shadow-md text-center bounce">
+        <img src="file:///C:/Users/Acer/Downloads/Robux_2019_Logo_Black.svg.webp" alt="Paket Robux khusus 5 hari dengan timer" />
+        <h3 class="text-xl font-semibold mt-4">Paket Robux 5 Hari Special</h3>
+        <p class="mt-2">Top-up Robux selama 5 hari dengan harga spesial!</p>
+        <p class="text-2xl font-bold text-green-600 mt-2">Rp 150.000</p>
+        <button onclick="alert('Paket 5 Hari Special! Kontak WA 083837940218 untuk detail dan order!')" class="mt-4 px-4 py-2 rounded hover:bg-red-700 transition">Beli Sekarang</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-16 bg-gray-100 text-center">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold mb-4 slideIn" style="color:#b91c1c;">Kontak Kami</h2>
+      <p class="text-lg mb-6" style="color:#7f1d1d;">Ada pertanyaan atau ingin order? Hubungi kami langsung!</p>
+      <p class="text-xl font-semibold">WhatsApp: <a href="https://wa.me/083837940218">083837940218</a></p>
+    </div>
+  </section>
+
+  <footer class="py-4 text-center">
+    <p>&copy; 2025 AdvStyle. Semua hak dilindungi. Industri Roblox & Penjualan Robux.</p>
+  </footer>
+
+  <script>
+    // Tombol menu awal untuk menampilkan produk dan menyembunyikan menu awal dengan animasi
+    document.getElementById('btn-mulai').addEventListener('click', function() {
+      document.getElementById('menu-awal').style.display = 'none';
+      const products = document.getElementById('products');
+      products.classList.add('show');
+      products.setAttribute('aria-hidden', 'false');
+    });
+
+    // Script alert pada tombol beli (tetap seperti semula)
+    const buttons = document.querySelectorAll('#products button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Kontak kami di WA 083837940218 untuk order!');
+      });
+    });
+  </script>
+</body>
+</html>
